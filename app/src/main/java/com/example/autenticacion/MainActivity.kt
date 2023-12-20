@@ -17,8 +17,16 @@ class MainActivity : AppCompatActivity() {
         binding.biniciar.setOnClickListener {
             login()
         }
+        binding.bregistra.setOnClickListener {
+            registro()
+        }
 
     }
+
+    private fun registro() {
+        startActivity(Intent(this, Registrar::class.java))
+    }
+
     private fun login(){
         // Comprobamos los campos de correo y contraseña pra que no esten vacios
         if(binding.editTextText3.text.isNotEmpty()&& binding.editTextText2.text.isNotEmpty()){
