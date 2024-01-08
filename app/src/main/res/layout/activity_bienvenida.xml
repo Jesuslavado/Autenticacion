@@ -31,7 +31,7 @@
         android:layout_width="310dp"
         android:layout_height="76dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="marca"
         android:inputType="text"
@@ -39,11 +39,35 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
+        android:id="@+id/matricula"
+        android:layout_width="310dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="matricula"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modelo" />
+
+    <EditText
+        android:id="@+id/modelo"
+        android:layout_width="310dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="modelo"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marca" />
+
+    <EditText
         android:id="@+id/color"
         android:layout_width="310dp"
         android:layout_height="76dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="color"
         android:inputType="text"
@@ -55,33 +79,29 @@
         android:layout_width="220dp"
         android:layout_height="60dp"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:text="Guardar Coche"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/color" />
 
-    <EditText
-        android:id="@+id/modelo"
-        android:layout_width="310dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="modelo"
-        android:inputType="text"
+    <Button
+        android:id="@+id/beditar"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="72dp"
+        android:text="Editar Coche"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/marca" />
+        app:layout_constraintTop_toBottomOf="@+id/color" />
 
-    <EditText
-        android:id="@+id/matricula"
-        android:layout_width="310dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="matricula"
-        android:inputType="text"
+    <Button
+        android:id="@+id/beliminar"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="128dp"
+        android:text="Eliminar Coche"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modelo" />
+        app:layout_constraintTop_toBottomOf="@+id/color" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

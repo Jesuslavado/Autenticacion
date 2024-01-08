@@ -27,10 +27,10 @@ class Bienvenida : AppCompatActivity() {
                 binding.modelo.text.isNotEmpty() &&
                 binding.color.text.isNotEmpty()){
                  db.collection("coches").add(mapOf(
-                     "color" to binding.color.text,
-                     "marca" to binding.marca.text,
-                     "matricula" to binding.matricula.text,
-                     "modelo" to binding.modelo.text
+                     "color" to binding.color.text.toString(),
+                     "marca" to binding.marca.text.toString(),
+                     "matricula" to binding.matricula.text.toString(),
+                     "modelo" to binding.modelo.text.toString()
                  ))
                      .addOnSuccessListener { documento ->
                          Toast.makeText(this, "nuevo coche añadido con el id: ${documento.id}", Toast.LENGTH_LONG).show()
@@ -48,6 +48,28 @@ class Bienvenida : AppCompatActivity() {
             FirebaseAuth.getInstance().signOut()
 
             startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        binding.beditar.setOnClickListener {
+            db.collection("coches")
+                .whereEqualTo("matricula", binding.matricula.text.toString())
+                .get().addOnSuccessListener {
+                    it.forEach {
+                        binding.marca.setText(it.get("marca") as String?)
+                        binding.modelo.setText(it.get("modelo") as String?)
+                        binding.color.setText(it.get("color") as String?)
+                    }
+                }
+        }
+
+        binding.beliminar.setOnClickListener {
+            db.collection("coches")
+                .get()
+                .addOnSuccessListener {
+                    it.forEach {
+                        it.reference.delete()
+                    }
+                }
         }
     }
 }
