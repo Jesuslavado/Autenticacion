@@ -20,7 +20,7 @@ class Bienvenida : AppCompatActivity() {
 
 
         val db= FirebaseFirestore.getInstance()
-
+/*
         binding.bguardar.setOnClickListener {
             if(binding.matricula.text.isNotEmpty() &&
                 binding.marca.text.isNotEmpty() &&
@@ -43,6 +43,33 @@ class Bienvenida : AppCompatActivity() {
                 Toast.makeText(this, "Algun campo esta vacío", Toast.LENGTH_LONG).show()
             }
         }
+*/
+
+        // Añadir un nuevo coche conociendo su identificador
+        binding.bguardar.setOnClickListener {
+            if(binding.matricula.text.isNotEmpty() &&
+                binding.marca.text.isNotEmpty() &&
+                binding.modelo.text.isNotEmpty() &&
+                binding.color.text.isNotEmpty()){
+                db.collection("coches").add(mapOf(
+                    "color" to binding.color.text.toString(),
+                    "marca" to binding.marca.text.toString(),
+                    "matricula" to binding.matricula.text.toString(),
+                    "modelo" to binding.modelo.text.toString()
+                )
+                )
+                db.collection("coches").document(binding.matricula.text.toString())
+                    .set(mapOf(
+                        "color" to binding.color.text.toString(),
+                        "marca" to binding.marca.text.toString(),
+                        "modelo" to binding.modelo.text.toString()
+                    )
+                    )
+            }
+            else{
+                Toast.makeText(this, "Algún campo esta vacío", Toast.LENGTH_LONG).show()
+            }
+        }
 
         binding.bcerra.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
@@ -61,7 +88,7 @@ class Bienvenida : AppCompatActivity() {
                     }
                 }
         }
-
+/*
         binding.beliminar.setOnClickListener {
             db.collection("coches")
                 .get()
@@ -70,6 +97,14 @@ class Bienvenida : AppCompatActivity() {
                         it.reference.delete()
                     }
                 }
-        }
+                 }
+
+ */
+        // Eliminar un registro sabiendo su id ( En este caso matricula )
+       binding.beliminar.setOnClickListener {
+           db.collection("coches")
+               .document(binding.matricula.text.toString())
+               .delete()
+       }
     }
 }
